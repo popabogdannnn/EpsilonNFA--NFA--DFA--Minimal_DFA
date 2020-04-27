@@ -117,7 +117,7 @@ NFA LambdaNFA::turnIntoNFA()
         fStates.push_back(it);
        // cout << it << " ";
     }
-  //  cout << "\n";
+   //cout << "\n";
 
    // cout << numOfStates << " " << startingState << " ";
     

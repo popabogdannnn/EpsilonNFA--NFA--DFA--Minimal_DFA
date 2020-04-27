@@ -83,7 +83,7 @@ DFA NFA::turnIntoDFA()
     vector <tuple <int, char, int> > newTransitions;
 
     if (finalStates.find(startingState) != finalStates.end()) {
-        newFinalStates.push_back(0);
+        newFinalStates.push_back(startingState);
     }
 
     while (!Q.empty()) {
@@ -108,7 +108,9 @@ DFA NFA::turnIntoDFA()
 
                 if (find(newStates.begin(), newStates.end(), nextSet) == newStates.end()) {
                     newStates.push_back(nextSet);
-                    newFinalStates.push_back(newNumOfStates);
+                    if (isFinal) {
+                        newFinalStates.push_back(newNumOfStates);
+                    }
                     newNumOfStates++;
                     Q.push(nextSet);
                 }

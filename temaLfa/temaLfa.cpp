@@ -56,14 +56,21 @@ int main()
  
 
     LambdaNFA QL(N, q0, finalStates, T, '$');
+    string check("abc");
+
+    cout << QL.accepts(check);
 
     NFA QNFA = QL.turnIntoNFA();
 
+    cout << QNFA.accepts(check);
+
     DFA QDFA = QNFA.turnIntoDFA();
 
-    string check("abc");
-
     cout << QDFA.accepts(check);
+
+    DFA minimalDFA = QDFA.minimize();
+
+    cout << minimalDFA.accepts(check);
    
     return 0;
 }
